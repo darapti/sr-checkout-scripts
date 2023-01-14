@@ -6,6 +6,12 @@
 <script src="https://cdn.jsdelivr.net/gh/darapti/sr-checkout-scripts@main/shopify-confirmed-order.js" />
 <script async>
     {% if checkout.order.financial_status == 'pending' %}
-        setTimeout(run('storeId', 'storeToken', '{{ checkout.order_id }}'));
+        setTimeout(
+            run(
+                'storeId',
+                'storeToken',
+                '{{ checkout.order_id }}'
+            )
+        );
     {% endif %}
 </script>
