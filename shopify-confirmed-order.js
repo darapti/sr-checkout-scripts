@@ -41,7 +41,7 @@ function checkout($btn) {
 function run(storeId, storeToken, orderId) {
     setCredentials(storeId, storeToken);
 
-    return () => {
+    return function () {
         const $container = document.getElementsByClassName('step')[0];
         $container.innerHTML += `
             <div class="step__footer payment">
