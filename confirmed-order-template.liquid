@@ -1,0 +1,11 @@
+<style>
+    .step__footer:not(.payment) {
+        display: none;
+    }
+</style>
+<script src="" />
+<script async>
+    {% if checkout.order.financial_status == 'pending' %}
+        setTimeout(run('storeId', 'storeToken', '{{ checkout.order_id }}'));
+    {% endif %}
+</script>
