@@ -12,13 +12,13 @@ function getCredentials() {
 }
 
 
-async function checkout($btn) {
+function checkout($btn) {
     $btn.classList.add('loading');
     document.getElementsByClassName('loading-overlay__spinner')[0].classList.remove('hidden');
 
     const credentials = getCredentials();
 
-    const response = await fetch('https://984e9d6ynh.execute-api.us-east-1.amazonaws.com/v1//shopify-orders/checkout-url', {
+    fetch('https://984e9d6ynh.execute-api.us-east-1.amazonaws.com/v1//shopify-orders/checkout-url', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -28,14 +28,14 @@ async function checkout($btn) {
         body: JSON.stringify({
             shopifyOrderId: parseInt($btn.getAttribute('order-id'))
         }),
-    });
-    const checkout = await response.json();
-    if (!checkout.checkoutUrl) {
-        alert(`Order status: ${checkout.status}`);
-        return;
-    }
+    }).then(response => response.json()).then(checkout => {
+        if (!checkout.checkoutUrl) {
+            alert(`Order status: ${checkout.status}`);
+            return;
+        }
 
-    window.location.replace(checkout.checkoutUrl);
+        window.location.replace(checkout.checkoutUrl);
+    });
 }
 
 function run(storeId, storeToken, orderId) {
