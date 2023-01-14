@@ -38,7 +38,7 @@ async function checkout($btn) {
     window.location.replace(checkout.checkoutUrl);
 }
 
-async function run(storeId, storeToken, orderId) {
+function run(storeId, storeToken, orderId) {
     setCredentials(storeId, storeToken);
 
     return () => {
