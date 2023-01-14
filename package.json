@@ -1,0 +1,10 @@
+{
+  "name": "sr-checkout-scripts",
+  "version": "0.0.1",
+  "description": "Scripts for Shopify client side",
+  "main": "index.js",
+  "repository": "https://github.com/darapti/sr-checkout-scripts.git",
+  "author": "danlgz <hi@danlgz.io>",
+  "license": "MIT",
+  "private": false
+}
