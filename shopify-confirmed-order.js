@@ -18,7 +18,7 @@ function checkout($btn) {
 
     const credentials = getCredentials();
 
-    fetch('https://984e9d6ynh.execute-api.us-east-1.amazonaws.com/v1//shopify-orders/checkout-url', {
+    fetch('https://984e9d6ynh.execute-api.us-east-1.amazonaws.com/v1/shopify-orders/checkout-url', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
