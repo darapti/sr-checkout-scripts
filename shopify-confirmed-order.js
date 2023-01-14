@@ -14,7 +14,7 @@ function getCredentials() {
 
 function checkout($btn) {
     $btn.classList.add('loading');
-    document.getElementsByClassName('loading-overlay__spinner')[0].classList.remove('hidden');
+    document.getElementById('btn-payment').textContent = 'Cargando...';
 
     const credentials = getCredentials();
 
@@ -30,6 +30,7 @@ function checkout($btn) {
         }),
     }).then(response => response.json()).then(checkout => {
         if (!checkout.checkoutUrl) {
+            document.getElementById('btn-payment').textContent = 'Continuar a pago';
             alert(`Order status: ${checkout.status}`);
             return;
         }
@@ -46,12 +47,7 @@ function run(storeId, storeToken, orderId) {
         $container.innerHTML += `
             <div class="step__footer payment">
                 <button data-osp-continue-button="" class="button step__footer__continue-btn btn" onclick="checkout(this)" order-id="${orderId}">
-                    <span class="btn__content">Continuar a pago</span>
-                    <div class="loading-overlay__spinner hidden">
-                        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                        </svg>
-                    </div>
+                    <span class="btn__content" id="btn-payment">Continuar a pago</span>
                 </button>
             <div/>
         `;
