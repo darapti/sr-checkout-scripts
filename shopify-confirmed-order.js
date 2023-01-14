@@ -24,7 +24,6 @@ function checkout($btn) {
             'Content-Type': 'application/json',
             'X-STORE-ID': credentials.storeId,
             'X-STORE-TOKEN': credentials.storeToken,
-            'Access-Control-Allow-Origin': 'no-cors',
         },
         body: JSON.stringify({
             shopifyOrderId: parseInt($btn.getAttribute('order-id'))
