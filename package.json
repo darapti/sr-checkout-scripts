@@ -1,6 +1,6 @@
 {
   "name": "sr-checkout-scripts",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Scripts for Shopify client side",
   "main": "index.js",
   "repository": "https://github.com/darapti/sr-checkout-scripts.git",
