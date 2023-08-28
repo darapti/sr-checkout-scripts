@@ -3,15 +3,18 @@
         display: none;
     }
 </style>
-<script src="https://cdn.jsdelivr.net/gh/darapti/sr-checkout-scripts@0.0.9/shopify-confirmed-order.js"></script>
-<script>
-    {% if checkout.order.financial_status == 'pending' %}
-        setTimeout(
-            run(
-                'storeId',
-                'storeToken',
+<script src="https://sr-checkout-scripts.darapti.com/shopify-confirmed-order.js"></script>
+<script type="text/javascript">
+    document.addEventListener("readystatechange", (event) => {
+        const checkoutIsWithRecurrente = document.querySelector(
+            '.payment-method-list__item__info').textContent.trim() === 'Recurrente';
+        if (checkoutIsWithRecurrente && event.target.readyState === "complete") {
+            document.querySelector('.step__footer:not(.payment)').style.display = "none";
+            generateLinkFromConfirmedOrderPage(
+                'cef86fb2-36ed-4927-a5fc-53669032dee4',
+                '6c7a9293dd9e26222e6c6d9f0e35c0ede0c8417cb218119c2ce5a07a4791892e',
                 '{{ checkout.order_id }}'
-            ), 1000
-        );
-    {% endif %}
+            )
+        }
+    });
 </script>
